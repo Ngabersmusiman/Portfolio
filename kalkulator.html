@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kalkulator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('img/kalkulator2.jpg'); /* Ganti dengan URL gambar Anda */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .calculator {
+      background-color: rgba(51, 51, 51, 0.8); /* Transparansi untuk melihat latar belakang */
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .display {
+      background-color: #444;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 20px;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .button {
+      background-color: #666;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #888;
+    }
+
+    .operator {
+      background-color: #ff5500;
+    }
+
+    .operator:hover {
+      background-color: #ff7733;
+    }
+
+    .equal {
+      background-color: #00cc00;
+    }
+
+    .equal:hover {
+      background-color: #33ff33;
+    }
+
+    .clear {
+      background-color: #cc0000;
+    }
+
+    .clear:hover {
+      background-color: #ff3333;
+    }
+  </style>
+ </head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display"></div>
+    <div class="buttons">
+      <button class="button" id="button-7">7</button>
+      <button class="button" id="button-8">8</button>
+      <button class="button" id="button-9">9</button>
+      <button class="button operator" id="button-divide">/</button>
+      <button class="button" id="button-4">4</button>
+      <button class="button" id="button-5">5</button>
+      <button class="button" id="button-6">6</button>
+      <button class="button operator" id="button-multiply">*</button>
+      <button class="button" id="button-1">1</button>
+      <button class="button" id="button-2">2</button>
+      <button class="button" id="button-3">3</button>
+      <button class="button operator" id="button-minus">-</button>
+      <button class="button" id="button-0">0</button>
+      <button class="button" id="button-dot">.</button>
+      <button class="button equal" id="button-equal">=</button>
+      <button class="button operator" id="button-plus">+</button>
+      <button class="button clear" id="button-clear">C</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById('display');
+    let buttons = document.querySelectorAll('.button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        let buttonText = button.textContent;
+        if (buttonText === '=') {
+          let result = eval(display.textContent);
+          display.textContent = result;
+        } else if (buttonText === 'C') {
+          display.textContent = '';
+        } else {
+          display.textContent += buttonText;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
